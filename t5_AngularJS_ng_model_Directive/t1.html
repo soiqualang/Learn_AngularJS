@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+input.ng-invalid {
+    background-color: red;
+}
+input.ng-empty{
+	background-color: yellow;
+}
+</style>
+<body>
+
+<form ng-app="myApp" ng-controller="myCtrl" name="myForm">
+    Email:
+    <input type="email" name="myE_Address" ng-model="txt_email" placeholder="soi@msn.com">
+    <span ng-show="myForm.myE_Address.$error.email">Not a valid e-mail address</span>
+	<p>Status</p>
+	<p>Valid: {{myForm.myE_Address.$valid}} (if true, the value meets all criteria).</p>
+	<p>Dirty: {{myForm.myE_Address.$dirty}} (if true, the value has been changed).</p>
+	<p>Touched: {{myForm.myE_Address.$touched}} (if true, the field has been in focus).</p>
+</form>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.txt_email = "";
+});
+</script>
+
+<p>Use the ng-model directive to bind the value of the input field to a property made in the controller.</p>
+
+</body>
+</html>
