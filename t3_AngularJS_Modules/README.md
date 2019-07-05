@@ -17,8 +17,16 @@ Learn_AngularJS
 
 * Use `ng-model` attr
 
-https://www.w3schools.com/angular/
 
-### t1.html
+## t1.html - Adding a Controller
 
 <img src="h1.PNG">
+
+## t2.html - Adding a Directive
+
+https://www.w3schools.com/angular/angular_ref_directives.asp
+
+> Tôi hông có hỉu :v
+
+---
+https://www.w3schools.com/angular/
