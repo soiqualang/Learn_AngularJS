@@ -28,6 +28,8 @@ Do vậy:
 
 * Nếu để `input tag` type là `number` thì không cần
 
+<img src="Dog_anatomy_lateral_skeleton_view.jpg">
+
 ---
 
 https://www.w3schools.com/angular/
