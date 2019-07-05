@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<h1>Repeating HTML Elements</h1>
+	<p>Looping with ng-repeat:</p>
+	<ul>
+	<li ng-repeat="x in names_arr1">
+	  {{ x }}
+	</li>
+	</ul>
+	
+	<select ng-model="txt_country">
+		<option ng-repeat="x in names_obj1" value="{{x.country}}">{{x.name + '-' + x.country}}</option>
+	</select>
+	<span>Selected: {{txt_country}}</span>
+</div>
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+    $scope.names_arr1=['Jani','Hege','Kai'];
+	$scope.names_obj1=[{name:'Jani',country:'Norway'},{name:'Hege',country:'Sweden'},{name:'Kai',country:'Denmark'}];
+	$scope.txt_country='Denmark';
+});
+</script>
+</body>
+</html>
