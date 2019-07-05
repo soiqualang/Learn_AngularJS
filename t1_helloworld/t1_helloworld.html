@@ -3,15 +3,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
 
-<div ng-app="">
+<div ng-app="" ng-init="name='soiqualang'">
 	
-	<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+	<p>Name : <input type="text" ng-model="txt_name" placeholder="Enter name here"></p>
 	
-	<h1>Xin chao <span ng-bind="name"></span></h1>
-	<p>Xin chao 333333 <span ng-bind="name"></span></p>
+	<h1>Xin chao <span ng-bind="txt_name"></span></h1>
+	<p>Xin chao 333333 <span ng-bind="txt_name"></span></p>
 	<hr>
-	<h1>Xin chao {{name}}</h1>
-	<p>Xin chao 333333 {{name}}</p>
+	<h1>Xin chao {{txt_name}}</h1>
+	<p>Xin chao 333333 {{txt_name}}</p>
+	
+	<h1>I am {{name}}</h1>
+	
+	<hr>
+	<h1>AngularJS Expressions</h1>
+	Calc Acreage:<br>
+	<input type="number" ng-model="txt_num_a" placeholder="Enter number a"><br>
+	<input type="number" ng-model="txt_num_b" placeholder="Enter number b"><br>
+	<p>Acreage: {{(txt_num_a+txt_num_b)*2}}</p>
 	
 </div>
 

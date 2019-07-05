@@ -10,10 +10,22 @@ Learn_AngularJS
 
 *The `ng-bind` directive binds the content of the <p> element to the application variable name.
 
+*The `ng-init` directive initializes AngularJS application variables.
+
 ```html
 <div ng-app="">
 bla bla....
 </div>
 ```
+
+## Lưu ý về cộng number
+
+AngularJS sẽ hiểu dấu + là nối chuỗi (concat)
+
+Do vậy:
+
+* Giá trị get được phải `*1` để ép kiểu sang số nếu `input tag` có type là `text`
+
+* Nếu để `input tag` type là `number` thì không cần
 
 https://www.w3schools.com/angular/
