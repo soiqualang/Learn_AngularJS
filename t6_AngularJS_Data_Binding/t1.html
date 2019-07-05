@@ -6,7 +6,7 @@
 <div ng-app="myApp" ng-controller="myCtrl">
     <h1 ng-click="changeName()">{{firstname}}</h1>
 	
-	<input type="button" ng-click="clickme()" value="hahahahahaha">
+	<input type="button" ng-click="clickme()" ng-mouseover="mover()" ng-mouseleave="mleave()" value="{{txta}}">
 	
 </div>
 
@@ -17,9 +17,17 @@ app.controller('myCtrl', function($scope) {
     $scope.changeName = function() {
         $scope.firstname = "Nelly";
     }
+	
+	$scope.txta='hahahaha';
 	$scope.clickme = function() {
         alert('xin chao');
     }
+	$scope.mover=function(){
+		$scope.txta='hohohoho';
+	}
+	$scope.mleave=function(){
+		$scope.txta='hahahaha';
+	}
 });
 </script>
 
