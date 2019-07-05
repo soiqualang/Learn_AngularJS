@@ -6,7 +6,22 @@
 <div ng-app="myApp" ng-controller="myCtrl">
 {{ firstName + " " + lastName }}
 
+<hr>
+
+<span>Image url</span>
+<input type="text" ng-model="img_src" placeholder="Image url here..">
+<br>
+<span>Image width</span>
+<input type="text" ng-model="img_w" placeholder="Image width">
+<br>
+<span>Border color </span>
 <input type="text" style="background-color:{{txt_color}}" ng-model="txt_color">
+<br>
+<span>Border style </span>
+<input type="text" ng-model="img_style">
+<br><br>
+<img src="{{img_src}}" style="width:{{img_w}};border-style:{{img_style}};border-color:{{txt_color}};border-width: 40px;">
+
 </div>
 
 <script>
@@ -14,7 +29,10 @@ var app = angular.module("myApp", []);
 app.controller("myCtrl", function($scope) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";
-	$scope.txt_color = "yellow";
+	$scope.txt_color = "lightsalmon";
+	$scope.img_src = "https://chesterfield-rspca.org.uk/wp-content/uploads/2019/07/rex1-600x400.jpg";
+	$scope.img_w="450px";
+	$scope.img_style="double";
 });
 </script>
 
