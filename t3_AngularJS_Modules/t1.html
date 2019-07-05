@@ -18,7 +18,17 @@
 <input type="text" style="background-color:{{txt_color}}" ng-model="txt_color">
 <br>
 <span>Border style </span>
-<input type="text" ng-model="img_style">
+<select ng-model="img_style">
+	<option value="double">double</option>
+	<option value="dashed">dashed</option>
+	<option value="dotted">dotted</option>
+	<option value="groove">groove</option>
+	<option value="inset">inset</option>
+	<option value="outset">outset</option>
+	<option value="ridge">ridge</option>
+	<option value="solid">solid</option>
+	<option value="unset">unset</option>
+</select>
 <br><br>
 <img src="{{img_src}}" style="width:{{img_w}};border-style:{{img_style}};border-color:{{txt_color}};border-width: 40px;">
 
@@ -27,8 +37,8 @@
 <script>
 var app = angular.module("myApp", []);
 app.controller("myCtrl", function($scope) {
-    $scope.firstName = "John";
-    $scope.lastName = "Doe";
+    $scope.firstName = "Soiqualang";
+    $scope.lastName = "Chentreu";
 	$scope.txt_color = "lightsalmon";
 	$scope.img_src = "https://chesterfield-rspca.org.uk/wp-content/uploads/2019/07/rex1-600x400.jpg";
 	$scope.img_w="450px";
