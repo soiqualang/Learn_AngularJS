@@ -21,4 +21,20 @@ input.ng-invalid {
 }
 ```
 
+### Note
+
+Thứ tự khai báo css cũng có liên quan đến việc thể hiện màu check Validate
+
+```css
+input.ng-invalid {
+    background-color: red;
+}
+input.ng-valid{
+	background-color: green;
+}
+input.ng-empty{
+	background-color: yellow;
+}
+```
+
 https://www.w3schools.com/angular/
