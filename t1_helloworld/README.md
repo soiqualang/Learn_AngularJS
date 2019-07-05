@@ -28,4 +28,8 @@ Do vậy:
 
 * Nếu để `input tag` type là `number` thì không cần
 
+---
+
 https://www.w3schools.com/angular/
+
+https://stackoverflow.com/questions/12755558/how-to-sum-two-fields-in-angularjs-and-show-the-result-in-an-label

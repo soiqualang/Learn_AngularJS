@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+Full Name: {{firstName + " " + lastName}}
+
+<br>
+
+<img src="{{img_src}}" width="{{img_w}}">
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($scope) {
+  $scope.firstName= "John";
+  $scope.lastName= "Doe";
+  $scope.img_src= 'Dog_anatomy_lateral_skeleton_view.jpg';
+  $scope.img_w='550px';
+});
+</script>
+
+</body>
+</html>
