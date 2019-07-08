@@ -22,9 +22,7 @@
 	<hr>
 	<div ng-bind-html="txt1">
 	</div>
-	<iframe style="width:{{iframe.width}};height:{{iframe.height}};" src="{{trustSrc('http://www.youtube.com/embed/'+selected)}}"></iframe>
-	
-	{{iframe.height}}
+	<iframe style="width:{{iframe.width}};height:{{iframe.height}};" src="{{iframe.url}}"></iframe>
 	
 </div>
 
@@ -32,15 +30,18 @@
 var app = angular.module('myApp', ['ngSanitize']);
 app.controller('myCtrl', function($scope,$sce) {
 	$scope.selected='u3JE-s3cWMo';
-	$scope.txt1='<h1>hahahaha</h1>';
-	$scope.trustSrc = function(src) {
-		return $sce.trustAsResourceUrl(src);
-	}
 	$scope.iframe = {
-		src:"http://www.youtube.com/embed/u3JE-s3cWMo",
+		url:'http://www.youtube.com/embed/u3JE-s3cWMo',
 		width:"600px",
 		height:"400px"
 	};
+	$scope.txt1='<h1>hahahaha</h1>';
+	$scope.change_select=function(selected){
+		var src='http://www.youtube.com/embed/'+selected;
+		$scope.iframe.url=$sce.trustAsResourceUrl(src);
+		//return $sce.trustAsResourceUrl(src);
+	};
+	//$scope.change_select($scope.selected);
 });
 </script>
 
