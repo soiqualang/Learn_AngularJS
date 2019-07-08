@@ -8,6 +8,13 @@
 	
 	<input type="button" ng-click="clickme()" ng-mouseover="mover()" ng-mouseleave="mleave()" value="{{txta}}">
 	
+	<select ng-change="change_select(selected)" ng-model="selected">
+		<option value="volvo">Volvo</option>
+		<option value="saab">Saab</option>
+		<option value="mercedes">Mercedes</option>
+		<option value="audi">Audi</option>
+	</select>
+	
 </div>
 
 <script>
@@ -27,6 +34,11 @@ app.controller('myCtrl', function($scope) {
 	}
 	$scope.mleave=function(){
 		$scope.txta='hahahaha';
+	}
+	//Selectbox
+	$scope.selected='audi';
+	$scope.change_select=function(selected){
+		alert(selected);
 	}
 });
 </script>

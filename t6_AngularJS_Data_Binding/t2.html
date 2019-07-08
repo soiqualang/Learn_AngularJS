@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	List Video:
+	<select ng-change="change_select(selected)" ng-model="selected">
+		<option value="gTXEvcprj40">Ta Có Hẹn Với Tháng 5 - Nguyên Hà | St. Hồ Tiến Đạt</option>
+		<option value="83JzHtNBZDE">Những Câu Chuyện Cũ Mèm - Nguyên Hà | St. Hồ Tiến Đạt</option>
+		<option value="Pxv3LVJ165k">Nhắm Mắt Thấy Mùa Hè (OST) - Nguyên Hà</option>
+		<option value="tiI9U7RREMI">Xin Lỗi - Nguyên Hà | St. Hồ Tiến Đạt</option>
+		<option value="GgQFO8dL5XQ">Thanh Xuân - Da LAB</option>
+		<option value="u3JE-s3cWMo">MÙA THU LÁ XANH - THÙY TRINH</option>
+		<option value="tndWY2o-aBA">Lạ - Phạm Đình Thái Ngân</option>
+		<option value="ccAdG4WP4_g">SÀI GÒN VẪN THẾ ( HỒ TIẾN ĐẠT ) - PHẠM HOÀI NAM</option>
+	</select>
+	<hr>
+	<div ng-bind-html="txt1">
+	</div>
+	<iframe style="width:{{iframe.width}};height:{{iframe.height}};" src="{{trustSrc('http://www.youtube.com/embed/'+selected)}}"></iframe>
+	
+	{{iframe.height}}
+	
+</div>
+
+<script>
+var app = angular.module('myApp', ['ngSanitize']);
+app.controller('myCtrl', function($scope,$sce) {
+	$scope.selected='u3JE-s3cWMo';
+	$scope.txt1='<h1>hahahaha</h1>';
+	$scope.trustSrc = function(src) {
+		return $sce.trustAsResourceUrl(src);
+	}
+	$scope.iframe = {
+		src:"http://www.youtube.com/embed/u3JE-s3cWMo",
+		width:"600px",
+		height:"400px"
+	};
+});
+</script>
+
+</body>
+</html>
