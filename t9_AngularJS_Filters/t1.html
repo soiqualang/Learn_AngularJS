@@ -17,6 +17,11 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+img.sort{
+	width:20px;
+	cursor: pointer;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
@@ -63,16 +68,16 @@ tr:nth-child(even) {
   <tr>
     <th>
 		name
-		<img src="up.png" width="20px">
-		<img src="down.png" width="20px">
+		<img src="up.png" class="sort" ng-click="short_asc('name')">
+		<img src="down.png" class="sort" ng-click="short_desc('name')">
 	</th>
     <th>
 		country
-		<img src="up.png" width="20px">
-		<img src="down.png" width="20px">
+		<img src="up.png" class="sort" ng-click="short_asc('country')">
+		<img src="down.png" class="sort" ng-click="short_desc('country')">
 	</th>
   </tr>
-  <tr ng-repeat="x in names | filter:txt_filter_name | filter:txt_filter_country">
+  <tr ng-repeat="x in names | orderBy:order_item">
     <td>{{x.name}}</td>
     <td>{{x.country}}</td>
   </tr>
@@ -100,7 +105,12 @@ app.controller('personCtrl', function($scope) {
 		{name:'Kai',country:'Norway'}
 	];
 	$scope.price=250;
-	
+	$scope.short_asc=function(x){
+		$scope.order_item=x;
+	}
+	$scope.short_desc=function(x){
+		$scope.order_item='-'+x;
+	}
 });
 </script>
 
