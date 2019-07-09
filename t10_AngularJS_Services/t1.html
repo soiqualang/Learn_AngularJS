@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<body>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+<body ng-app="myApp">
 
-<div ng-app="myApp" ng-controller="myCtrl">
+<div ng-controller="myCtrl">
+<h1>The $location Service</h1>
 <p>The url of this page is:</p>
 <h3>Url: {{myUrl}}</h3>
 <h3>Hash: {{myUrl_hash}}</h3>
@@ -12,15 +14,30 @@
 <p>This example uses the built-in $location service to get the absolute url of the page.</p>
 
 <hr>
+
+<div ng-controller="myhttp">
 <h1>The $http Service</h1>
+<p>{{myWelcomeinHTML}}</p>
+<p ng-bind-html="myWelcomeinHTML"></p>
+<p>{{myWelcomeinPHP}}</p>
+</div>
 
 <script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $location) {
+var app = angular.module('myApp', ['ngSanitize']);
+app.controller('myCtrl', function($scope,$location) {
     $scope.myUrl = $location.absUrl();
 	$scope.myUrl_hash = $location.$$hash;
 	purl=$location;
 	console.log(purl);
+});
+
+app.controller('myhttp',function($scope,$http) {
+	$http.get("welcome.html").then(function (response) {
+		$scope.myWelcomeinHTML = response.data;
+	});
+	$http.get("welcome.php").then(function (response) {
+		$scope.myWelcomeinPHP = response.data;
+	});
 });
 </script>
 

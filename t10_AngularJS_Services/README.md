@@ -9,7 +9,13 @@ AngularJS Services
 
 ## The $http Service
 
+### angular.js:14800 Error: [$sce:unsafe]
 
+<img src="h2.PNG">
+
+Lỗi này do bind một HTML, cách fix xem:
+
+https://github.com/soiqualang/Learn_AngularJS/tree/master/t6_AngularJS_Data_Binding
 
 
 ---
