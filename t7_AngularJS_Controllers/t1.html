@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
 <div ng-app="myApp" >
@@ -17,7 +18,7 @@
 	  </li>
 	</ul>
 	<hr>
-	<select ng-change="change_select(selected)" ng-model="selected">
+	<select ng-change="change_select(country)" ng-model="country">
 		<option ng-repeat="x in names" value="{{x.country}}">{{x.name}}</option>
 	</select>
 	Your choice: {{fullinfo}}
@@ -45,15 +46,14 @@ app.controller('namesCtrl', function($scope) {
 		{name:'Hege',country:'Sweden'},
 		{name:'Kai',country:'Denmark'}
 	];
-	$scope.fullinfo='hahahah';
-	
+	$scope.fullinfo='hahahah';	
 	
 	$scope.change_select=function(selected){
-		var select_val=selected;
-		var select_val=$.grep($scope.names, function (fruit){
-                    return fruit.Id == fruitId;
-                })[0].Name;
-		$scope.fullinfo='hihihiihi';
+		var country=$scope.country;
+		var name=$.grep($scope.names, function (x){
+			return x.country == country;
+		})[0].name;
+		$scope.fullinfo=name+' - '+country;
 	};
 	
 	$scope.clickme=function(){
