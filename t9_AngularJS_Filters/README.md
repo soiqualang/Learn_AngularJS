@@ -6,14 +6,20 @@ AngularJS Filters
 AngularJS provides filters to transform data:
 
 * `currency` Format a number to a currency format.
+> | currency : "NOK " : 3 
 * `date` Format a date to a specified format.
 * `filter` Select a subset of items from an array.
+> | filter:'Mar'
+(filter on all text)
 * `json` Format an object to a JSON string.
 * `limitTo` Limits an array/string, into a specified number of elements/characters.
 * `lowercase` Format a string to lower case.
+> | lowercase
 * `number` Format a number to a string.
-* `orderBy` Orders an array by an expression.
+* `orderBy:'country'` Orders an array by an expression.
+> | orderBy:'country'
 * `uppercase` Format a string to upper case.
+> | uppercase
 
 
 
