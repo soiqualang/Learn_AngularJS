@@ -68,13 +68,13 @@ img.sort{
   <tr>
     <th>
 		name
-		<img src="up.png" class="sort" ng-click="short_asc('name')">
-		<img src="down.png" class="sort" ng-click="short_desc('name')">
+		<img src="up.png" class="sort" ng-click="short('name','asc')">
+		<img src="down.png" class="sort" ng-click="short('name','desc')">
 	</th>
     <th>
 		country
-		<img src="up.png" class="sort" ng-click="short_asc('country')">
-		<img src="down.png" class="sort" ng-click="short_desc('country')">
+		<img src="up.png" class="sort" ng-click="short('country','asc')">
+		<img src="down.png" class="sort" ng-click="short('country','desc')">
 	</th>
   </tr>
   <tr ng-repeat="x in names | orderBy:order_item">
@@ -105,11 +105,15 @@ app.controller('personCtrl', function($scope) {
 		{name:'Kai',country:'Norway'}
 	];
 	$scope.price=250;
-	$scope.short_asc=function(x){
-		$scope.order_item=x;
-	}
-	$scope.short_desc=function(x){
-		$scope.order_item='-'+x;
+	$scope.short=function(x,order){
+		$scope.order_item=order=='desc'?'-'+x:x;
+		/*
+		if(order=='desc'){
+			$scope.order_item='-'+x;
+		}else{
+			$scope.order_item=x;
+		}
+		*/
 	}
 });
 </script>

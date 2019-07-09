@@ -18,6 +18,7 @@ AngularJS provides filters to transform data:
 * `number` Format a number to a string.
 * `orderBy:'country'` Orders an array by an expression.
 > orderBy:'country' => asc
+
 > orderBy:'-country' => des
 * `uppercase` Format a string to upper case.
 > uppercase
