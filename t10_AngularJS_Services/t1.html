@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<p>The url of this page is:</p>
+<h3>Url: {{myUrl}}</h3>
+<h3>Hash: {{myUrl_hash}}</h3>
+</div>
+
+<p>This example uses the built-in $location service to get the absolute url of the page.</p>
+
+<hr>
+<h1>The $http Service</h1>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $location) {
+    $scope.myUrl = $location.absUrl();
+	$scope.myUrl_hash = $location.$$hash;
+	purl=$location;
+	console.log(purl);
+});
+</script>
+
+</body>
+</html>
