@@ -24,13 +24,18 @@ AngularJS provides filters to transform data:
 > uppercase
 
 
-## Notes
+## t1.html - test with filters
 
 * Multi filter => just declare more `| filter: bla..`
 
 https://stackoverflow.com/questions/18792039/angularjs-multiple-filter-with-custom-filter-function
 
 <img src="h1.PNG">
+
+<img src="h2.PNG">
+
+## t2.html - declare a custom filter
+
 
 ---
 
