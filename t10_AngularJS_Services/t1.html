@@ -20,6 +20,11 @@
 <p>{{myWelcomeinHTML}}</p>
 <p ng-bind-html="myWelcomeinHTML"></p>
 <p>{{myWelcomeinPHP}}</p>
+
+<ul>
+<li ng-repeat="x in data1">{{x.timestamp}}</li>
+</ul>
+
 </div>
 
 <script>
@@ -37,6 +42,19 @@ app.controller('myhttp',function($scope,$http) {
 	});
 	$http.get("welcome.php").then(function (response) {
 		$scope.myWelcomeinPHP = response.data;
+	});
+	//get a json
+	$http.get("json.php").then(function (response) {
+		//$scope.names=JSON.parse(response.data);
+		//var myjson=JSON.parse(response.data);
+		//console.log(myjson);
+	});
+	//get quan trac
+	var tram_val_serv='http://sml.hcmgis.vn/sos/api/timeseries/30/getData';
+	$http.get(tram_val_serv).then(function (response){
+		var data1=response.data;
+		console.log(data1);
+		$scope.data1=data1;
 	});
 });
 </script>

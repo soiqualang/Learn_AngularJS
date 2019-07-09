@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+<body ng-app="myApp">
+
+<div ng-controller="myhttp">
+	<ul>
+	<li ng-repeat="x in data1">{{x.timestamp}}</li>
+	</ul>
+
+</div>
+
+<script>
+var app = angular.module('myApp', ['ngSanitize']);
+
+app.controller('myhttp',function($scope,$http) {	
+	//get quan trac
+	var tram_val_serv='http://sml.hcmgis.vn/sos/api/timeseries/30/getData';
+	$http.get(tram_val_serv).then(function (response){
+		var data1=response.data;
+		console.log(data1);
+		$scope.data1=data1;
+	});
+});
+</script>
+
+</body>
+</html>

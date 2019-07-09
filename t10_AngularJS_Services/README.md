@@ -18,6 +18,12 @@ Lỗi này do bind một HTML, cách fix xem:
 https://github.com/soiqualang/Learn_AngularJS/tree/master/t6_AngularJS_Data_Binding
 
 
+## Asynchronous problem
+
+### t2.html
+
+
+
 ---
 
 https://www.w3schools.com/angular/
