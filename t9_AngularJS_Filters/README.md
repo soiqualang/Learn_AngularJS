@@ -22,6 +22,13 @@ AngularJS provides filters to transform data:
 > | uppercase
 
 
+## Notes
+
+* Multi filter => just declare more `| filter: bla..`
+
+https://stackoverflow.com/questions/18792039/angularjs-multiple-filter-with-custom-filter-function
+
+<img src="h1.PNG">
 
 ---
 
