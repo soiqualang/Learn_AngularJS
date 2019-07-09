@@ -6,21 +6,57 @@
 
 <div ng-controller="myhttp">
 	<ul>
-	<li ng-repeat="x in data1">{{x.timestamp}}</li>
+	<li ng-repeat="x in data1">{{x.name}}</li>
 	</ul>
-
+	{{data1}}
+	
+	<table>
+	<tr>
+		<th>timestamp</th>
+		<th>value</th>
+	</tr>
+	<tr ng-repeat="x in data2">
+		<th>{{x.timestamp}}</th>
+		<th>{{x.value}}</th>
+	</tr>
 </div>
 
 <script>
 var app = angular.module('myApp', ['ngSanitize']);
 
 app.controller('myhttp',function($scope,$http) {	
-	//get quan trac
-	var tram_val_serv='http://sml.hcmgis.vn/sos/api/timeseries/30/getData';
-	$http.get(tram_val_serv).then(function (response){
+	$scope.data1={
+		"values": [{
+				"timestamp": 1562059995000,
+				"value": 3126.000
+			}, {
+				"timestamp": 1562061255000,
+				"value": 3244.000
+			}, {
+				"timestamp": 1562062455000,
+				"value": 3137.000
+			}, {
+				"timestamp": 1562063715000,
+				"value": 2176.000
+			}, {
+				"timestamp": 1562064975000,
+				"value": 1903.000
+			}
+		]
+	};
+	
+	$http.get('json.php').then(function (response){
 		var data1=response.data;
 		console.log(data1);
 		$scope.data1=data1;
+	});
+	
+	//get quan trac
+	var tram_val_serv='http://sml.hcmgis.vn/sos/api/timeseries/30/getData';
+	$http.get(tram_val_serv).then(function (response){
+		var data2=response.data;
+		console.log(data2);
+		$scope.data2=data2.values;
 	});
 });
 </script>

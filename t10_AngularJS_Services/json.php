@@ -1,3 +1,5 @@
 <?php
-echo "{people:[{name:'Jani',country:'Norway'}, {name:'Carl',country:'Sweden'}, {name:'Margareth',country:'England'}, {name:'Hege',country:'Norway'}, {name:'Joe',country:'Denmark'}, {name:'Gustav',country:'Sweden'}, {name:'Birgit',country:'Denmark'}, {name:'Mary',country:'England'}, {name:'Kai',country:'Norway'}]}";
+$someJSON = '[{"name":"Jonathan Suh","gender":"male"},{"name":"William Philbin","gender":"male"},{"name":"Allison McKinnery","gender":"female"}]';
+$someArray = json_decode($someJSON, true);
+echo json_encode($someArray);
 ?>
