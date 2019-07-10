@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+
+<input type="button" ng-click="func2get()" value="Send data by GET method">
+<input type="button" ng-click="func2post()" value="Send data by POST method">
+
+
+<h1>{{myWelcome}}</h1>
+
+</div>
+
+<p>The $http service requests a page on the server, and the response is set as the value of the "myWelcome" variable.</p>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+	var httpconfig={'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'};
+	var data2post=$.param({id: "hahahahahahahaah"});
+	var data2get={id: "hahahahahahahaah"};
+	
+	$scope.myWelcome='Xin chao!';
+	
+	$scope.func2get=function(){
+		$http({
+			method: 'GET',
+			url: 'welcome.php',
+			//data: data2post,
+			params: data2get,
+			headers: httpconfig
+		}).then(function(response) {
+			$scope.myWelcome = response.data;
+		});
+	}
+	
+	$scope.func2post=function(){
+		$http({
+			method: 'POST',
+			url: 'welcome.php',
+			data: data2post,
+			//params: data2get,
+			headers: httpconfig
+		}).then(function(response) {
+			$scope.myWelcome = response.data;
+		});
+	}
+	
+	
+});
+</script>
+
+</body>
+</html>

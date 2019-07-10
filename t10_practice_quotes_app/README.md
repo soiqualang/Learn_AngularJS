@@ -35,7 +35,7 @@ http://www.ebusinessgems.com/catalog/
 
 
 
-## Preferen
+## Preference
 
 https://www.w3schools.com/howto/howto_css_full_page.asp
 
