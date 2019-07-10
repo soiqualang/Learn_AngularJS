@@ -114,11 +114,11 @@ blockquote cite:before {
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
 </head>
 <body ng-app="myApp">
-<div ng-controller="myhttp" style="color:{{txtcolor}};" class="bg">
+<div ng-controller="myhttp" style="background-image: url('{{imgSrc}}');" class="bg">
 	<div class="info">
 		<blockquote id="info">
-			fgdhdgh
-			<cite>dhdfgh</cite>
+			{{quote.quoteText}}
+			<cite>{{quote.quoteAuthor}}</cite>
 		</blockquote>
 		<div id="txtHint"></div>
 	</div>
@@ -146,6 +146,30 @@ app.config( [
 
 app.controller('myhttp',function($scope,$http,$interval) {
 	$scope.txtcolor='green';
+	
+	//get background image
+	var imgsize=1218;
+	$scope.imgSrc='https://picsum.photos/'+imgsize;
+	$scope.getImg=function(){
+		$http.get('rand_img.php?imgsize='+imgsize).then(function (response){
+			$scope.imgSrc=response.data;
+		});
+	}
+	$interval(function () {
+		$scope.getImg();
+	}, 3000);
+	
+	//get quotes
+	$http.get('data/quotes_5000.json').then(function (response){
+		var quotes=response.data;
+		//console.log(quotes);
+		$scope.quotes=quotes;
+		$scope.quote=$scope.quotes[Math.floor(Math.random() * $scope.quotes.length)];
+	});
+	$interval(function () {
+		$scope.quote=$scope.quotes[Math.floor(Math.random() * $scope.quotes.length)];
+		//console.log($scope.quote);
+	}, 5000);
 });
 </script>
 </body>

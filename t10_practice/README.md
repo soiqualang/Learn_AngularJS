@@ -5,7 +5,10 @@ Practice AngularJS Services
 
 Make a dynamic showing quotes
 
-* random get and set backgrond image
+* get and set random backgrond image css
+* get and show random quotes
+
+<img src="h1.PNG">
 
 
 ## Database:
@@ -35,6 +38,9 @@ http://www.ebusinessgems.com/catalog/
 https://www.w3schools.com/howto/howto_css_full_page.asp
 
 https://jqueryui.com/draggable/
+
+https://stackoverflow.com/questions/42116554/angular-js-get-random-array-values-on-click
+
 --
 
 https://www.w3schools.com/angular/
