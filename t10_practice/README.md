@@ -1,7 +1,7 @@
 # Learn_AngularJS
 Practice AngularJS Services
 
-<img src="h2.PNG">
+<img src="h2.png">
 
 ## Target
 
