@@ -97,10 +97,31 @@ tr:nth-child(even) {
 		</tr>
     </tbody>
 	</table>
+	
+	<br>
+	
+	
+	<img src="{{imgSrc}}">
+	<!--<div ng-bind-html="imgSrc"></div>-->
+	<br><br><br>
+	
+	
 </div>
 
 <script>
 var app = angular.module('myApp', ['ngSanitize']);
+
+app.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {   
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+        // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
+		
+		//for img
+		$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|chrome-extension):/);
+    }
+]);
 
 app.controller('myhttp',function($scope,$http,$interval) {
 	$scope.data1={
@@ -160,6 +181,17 @@ app.controller('myhttp',function($scope,$http,$interval) {
 		$scope.ranNum=Math.floor(Math.random() * 10);
 		$scope.fgetJson();
 	}, 2000);
+	
+	//img src
+	$scope.imgSrc='https://picsum.photos/400';
+	$scope.getImg=function(){
+		$http.get('rand_img.php').then(function (response){
+			$scope.imgSrc=response.data;
+		});
+	}
+	$interval(function () {
+		$scope.getImg();
+	}, 3000);
 	
 	
 });
