@@ -1,7 +1,53 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+table.scroll {
+    /*width: 716px;*/ /* 140px * 5 column + 16px scrollbar width */
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+table.scroll tbody,
+table.scroll thead tr { display: block; }
+
+table.scroll tbody {
+    /*height: 100px;*/
+	height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.scroll tbody td,
+table.scroll thead th {
+    width: 140px;
+    border-right: 1px solid black;
+}
+
+table.scroll thead th:last-child {
+    width: 156px; /* 140px + 16px scrollbar width */
+}
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /*text-align: left;*/
+}
+
+tbody { border-top: 2px solid black; }
+
+tbody td:last-child, thead th:last-child {
+    border-right: none !important;
+}
+
+/* mau xen ke*/
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+</head>
 <body ng-app="myApp">
 
 <div ng-controller="myhttp">
@@ -10,15 +56,20 @@
 	</ul>
 	{{data1}}
 	
-	<table>
-	<tr>
-		<th>timestamp</th>
-		<th>value</th>
-	</tr>
-	<tr ng-repeat="x in data2">
-		<th>{{x.timestamp}}</th>
-		<th>{{x.value}}</th>
-	</tr>
+	<table class="scroll">
+	<thead>
+        <tr>
+            <th>timestamp</th>
+			<th>value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in data2">
+			<td>{{x.timestamp}}</td>
+			<td>{{x.value}}</td>
+		</tr>
+    </tbody>
+	</table>
 </div>
 
 <script>

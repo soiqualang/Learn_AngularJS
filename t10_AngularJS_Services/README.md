@@ -30,6 +30,14 @@ $someArray = json_decode($someJSON, true);
 echo json_encode($someArray);
 ``
 
+### Scroll bar in table
+
+http://jsfiddle.net/hashem/CrSpu/557/
+
+https://stackoverflow.com/questions/17067294/html-table-with-100-width-with-vertical-scroll-inside-tbody/17380697
+
+<img src="h3.PNG">
+
 ---
 
 https://www.w3schools.com/angular/
