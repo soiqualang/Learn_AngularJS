@@ -1,6 +1,8 @@
 # Learn_AngularJS
 AngularJS Services
 
+## t1.html
+
 `http://localhost/Learn_AngularJS/t10_AngularJS_Services/t1.html#!#id=3&act=update`
 
 ## $location
@@ -18,11 +20,15 @@ Lỗi này do bind một HTML, cách fix xem:
 https://github.com/soiqualang/Learn_AngularJS/tree/master/t6_AngularJS_Data_Binding
 
 
+
+https://www.w3schools.com/js/tryit.asp?filename=tryjs_random_0_9
+
+
 ## Asynchronous problem
 
 > (Có vẻ như angular hỗ trợ vụ đồng bộ hóa với `$http.get('json.php').then();`
 
-### t2.html
+## t2.html - get and parse json
 
 https://jonsuh.com/blog/convert-loop-through-json-php-javascript-arrays-objects/
 
@@ -39,6 +45,11 @@ http://jsfiddle.net/hashem/CrSpu/557/
 https://stackoverflow.com/questions/17067294/html-table-with-100-width-with-vertical-scroll-inside-tbody/17380697
 
 <img src="h3.PNG">
+
+## t3.html - Use a Custom Service Inside a Filter
+
+
+
 
 ---
 

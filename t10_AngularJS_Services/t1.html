@@ -22,10 +22,27 @@
 <p>{{myWelcomeinPHP}}</p>
 
 <ul>
-<li ng-repeat="x in data1">{{x.timestamp}}</li>
+<li ng-repeat="x in names">{{x.name+' - '+x.gender}}</li>
 </ul>
-
 </div>
+
+<hr>
+
+<div ng-controller="mytimeout">
+	<h1>The $timeout Service</h1>
+	<h2>{{myHeader}}</h2>
+</div>
+
+<hr>
+
+<div ng-controller="myinterval">
+	<h1>The $interval Service</h1>
+	<p>The time is:</p>
+	<h2>{{theTime}}</h2>
+	<h3>Lucky num for this momment: {{ranNum}}</h3>
+	
+</div>
+
 
 <script>
 var app = angular.module('myApp', ['ngSanitize']);
@@ -45,17 +62,27 @@ app.controller('myhttp',function($scope,$http) {
 	});
 	//get a json
 	$http.get("json.php").then(function (response) {
-		//$scope.names=JSON.parse(response.data);
-		//var myjson=JSON.parse(response.data);
-		//console.log(myjson);
+		$scope.names=response.data;
 	});
-	//get quan trac
-	var tram_val_serv='http://sml.hcmgis.vn/sos/api/timeseries/30/getData';
-	$http.get(tram_val_serv).then(function (response){
-		var data1=response.data;
-		console.log(data1);
-		$scope.data1=data1;
-	});
+});
+
+app.controller('mytimeout',function($scope,$timeout) {
+	$scope.myHeader = "Hello World! (will disappear after 3000ms)";
+	$timeout(function () {
+		$scope.myHeader = "How are you today?";
+	}, 3000);
+});
+
+app.controller('myinterval',function($scope,$interval) {
+	$scope.theTime = new Date().toLocaleTimeString();
+	//random integer form 0 to 9
+	$scope.ranNum=Math.floor(Math.random() * 10);
+	$interval(function () {
+		$scope.theTime = new Date().toLocaleTimeString();
+	}, 1000);
+	$interval(function () {
+		$scope.ranNum=Math.floor(Math.random() * 10);
+	}, 2000);
 });
 </script>
 
