@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table.scroll {
+    /*width: 716px;*/ /* 140px * 5 column + 16px scrollbar width */
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+table.scroll tbody,
+table.scroll thead tr { display: block; }
+
+table.scroll tbody {
+    /*height: 100px;*/
+	height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.scroll tbody td,
+table.scroll thead th {
+    width: 140px;
+    border-right: 1px solid black;
+}
+
+table.scroll thead th:last-child {
+    width: 156px; /* 140px + 16px scrollbar width */
+}
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /*text-align: left;*/
+}
+
+tbody { border-top: 2px solid black; }
+
+tbody td:last-child, thead th:last-child {
+    border-right: none !important;
+}
+
+/* mau xen ke*/
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="myhttp">
+	<ul>
+	<li ng-repeat="x in data1">{{x.name}}</li>
+	</ul>
+	{{data1}}
+	
+	<table class="scroll">
+	<thead>
+        <tr>
+            <th>timestamp</th>
+			<th>value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in data2">
+			<td>{{x.timestamp}}</td>
+			<td>{{x.value}}</td>
+		</tr>
+    </tbody>
+	</table>
+	<hr>
+	
+	<p>{{data4thistime}}</p>
+	
+	<p>{{ranNum}}</p>
+	
+	<p>The time is:</p>
+	<h2>{{theTime}}</h2>
+	
+	<table class="scroll">
+	<thead>
+        <tr>
+            <th>cat</th>
+			<th>name</th>
+			<th>date</th>
+			<th>value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in data3">
+			<td>{{x.cat}}</td>
+			<td>{{x.name}}</td>
+			<td>{{x.date}}</td>
+			<td>{{x.value}}</td>
+		</tr>
+    </tbody>
+	</table>
+</div>
+
+<script>
+var app = angular.module('myApp', ['ngSanitize']);
+
+app.controller('myhttp',function($scope,$http,$interval) {
+	$scope.data1={
+		"values": [{
+				"timestamp": 1562059995000,
+				"value": 3126.000
+			}, {
+				"timestamp": 1562061255000,
+				"value": 3244.000
+			}, {
+				"timestamp": 1562062455000,
+				"value": 3137.000
+			}, {
+				"timestamp": 1562063715000,
+				"value": 2176.000
+			}, {
+				"timestamp": 1562064975000,
+				"value": 1903.000
+			}
+		]
+	};
+	
+	$http.get('json.php').then(function (response){
+		var data1=response.data;
+		console.log(data1);
+		$scope.data1=data1;
+	});
+	
+	//get quan trac
+	var tram_val_serv='http://sml.hcmgis.vn/sos/api/timeseries/30/getData';
+	$http.get(tram_val_serv).then(function (response){
+		var data2=response.data;
+		console.log(data2);
+		$scope.data2=data2.values;
+	});
+	
+	//Clock
+	$interval(function () {
+		$scope.theTime = new Date().toLocaleTimeString();
+	}, 1000);
+	
+	var farr=[];
+	//Test to make a realtime request
+	$scope.fgetJson=function(){
+		$http.get('json_realtime.php').then(function (response){
+			var data3=response.data;
+			$scope.data4thistime=response.data;
+			//farr = farr.concat(data3);
+			//Place new data on the top
+			farr = data3.concat(farr);
+			console.log(data3);
+			$scope.data3=farr;
+		});
+	}
+	
+	$interval(function () {
+		$scope.ranNum=Math.floor(Math.random() * 10);
+		$scope.fgetJson();
+	}, 2000);
+	
+	
+});
+</script>
+
+</body>
+</html>
