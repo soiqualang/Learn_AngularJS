@@ -23,6 +23,7 @@ https://github.com/soiqualang/Learn_AngularJS/tree/master/t6_AngularJS_Data_Bind
 
 https://www.w3schools.com/js/tryit.asp?filename=tryjs_random_0_9
 
+<img src="h4.PNG">
 
 ## Asynchronous problem
 
