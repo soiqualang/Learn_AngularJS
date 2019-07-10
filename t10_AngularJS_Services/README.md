@@ -20,6 +20,8 @@ https://github.com/soiqualang/Learn_AngularJS/tree/master/t6_AngularJS_Data_Bind
 
 ## Asynchronous problem
 
+> (Có vẻ như angular hỗ trợ vụ đồng bộ hóa với `$http.get('json.php').then();`
+
 ### t2.html
 
 https://jonsuh.com/blog/convert-loop-through-json-php-javascript-arrays-objects/
