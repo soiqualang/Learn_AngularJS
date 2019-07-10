@@ -183,9 +183,10 @@ app.controller('myhttp',function($scope,$http,$interval) {
 	}, 2000);
 	
 	//img src
-	$scope.imgSrc='https://picsum.photos/400';
+	var imgsize=800;
+	$scope.imgSrc='https://picsum.photos/'+imgsize;
 	$scope.getImg=function(){
-		$http.get('rand_img.php').then(function (response){
+		$http.get('rand_img.php?imgsize='+imgsize).then(function (response){
 			$scope.imgSrc=response.data;
 		});
 	}

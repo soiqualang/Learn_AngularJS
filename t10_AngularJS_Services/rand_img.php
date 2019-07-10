@@ -6,8 +6,12 @@ header("Content-type: {$imginfo['mime']}");
 readfile($imgsrc);
 */
 
-
-$image = 'https://picsum.photos/400';
+if(isset($_REQUEST['imgsize'])){
+	$imgsize=$_REQUEST['imgsize'];
+}else{
+	$imgsize=200;
+}
+$image = 'https://picsum.photos/'.$imgsize;
 // Read image path, convert to base64 encoding
 $imageData = base64_encode(file_get_contents($image));
 
@@ -19,4 +23,5 @@ $src = 'data: '.';base64,'.$imageData;
 //echo '<img src="' . $src . '">';
 echo $src;
 //echo '<h1>jhkjhhkl</h1>';
+
 ?>
