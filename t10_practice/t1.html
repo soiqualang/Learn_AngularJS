@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("img_girl.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+#logo {
+	bottom:30px;
+	height:auto;
+	left:30px;
+	position:absolute;
+	width:34%;
+	z-index:1000;
+}
+#logo img {
+	width:100%;
+}
+
+blockquote {
+	/*font-family: Georgia, serif;*/
+	font-family: 'Dancing Script', cursive;
+	font-size: 300%;
+	font-style: italic;
+	width: 500px;
+	margin: 0.25em 0;
+	padding: 0.25em 40px;
+	line-height: 1.45;
+	position: relative;
+	color: #383838;
+}
+blockquote:before {
+	display: block;
+	content: "\201C";
+	font-size: 80px;
+	position: absolute;
+	left: -20px;
+	top: -20px;
+	color: #7a7a7a;
+}
+blockquote cite {
+	color: #999999;
+	font-size: 14px;
+	display: block;
+	margin-top: 5px;
+}
+blockquote cite:before {
+	content: "\2014 \2009";
+}
+
+.info{
+	padding: 6px 8px;
+	float: right;
+	position: absolute;
+	z-index: 1000;
+	font: 14px/16px Arial, Helvetica, sans-serif;
+	background: white;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;	
+	left: 140px;
+	top: 150px;
+}
+@media only screen and (max-width: 600px) {
+	.info{
+		padding: 6px 8px;
+		float: right;
+		position: absolute;
+		z-index: 1000;
+		font: 14px/16px Arial, Helvetica, sans-serif;
+		background: white;
+		background: rgba(255,255,255,0.8);
+		box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		border-radius: 5px;	
+		left: 6px;
+		top: 18px;
+		right: 6px;
+	}
+	blockquote {
+		font-family: 'Dancing Script', cursive;
+		font-size: 200%;
+		font-style: italic;
+		width:85%;
+		margin: 0.25em 0;
+		padding: 0.25em 40px;
+		line-height: 1.45;
+		position: relative;
+		color: #383838;
+	}
+}
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myhttp" style="color:{{txtcolor}};" class="bg">
+	<div class="info">
+		<blockquote id="info">
+			fgdhdgh
+			<cite>dhdfgh</cite>
+		</blockquote>
+		<div id="txtHint"></div>
+	</div>
+	
+	<a href="http://dothanhlong.org/" id="logo" target="_blank"><img src="logo.png" alt="Một sản phẩm của DOTHANHLONG.ORG" /></a>
+
+</div>
+<script>
+$( ".info" ).draggable();
+
+
+var app = angular.module('myApp', ['ngSanitize']);
+
+app.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {   
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+        // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
+		
+		//for img
+		$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|chrome-extension):/);
+    }
+]);
+
+app.controller('myhttp',function($scope,$http,$interval) {
+	$scope.txtcolor='green';
+});
+</script>
+</body>
+</html>

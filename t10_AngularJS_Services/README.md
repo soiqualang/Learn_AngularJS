@@ -87,6 +87,8 @@ and...tada:
 
 https://stackoverflow.com/questions/15606751/angularjs-changes-urls-to-unsafe-in-extension-page
 
+https://picsum.photos/
+
 ---
 
 https://www.w3schools.com/angular/
