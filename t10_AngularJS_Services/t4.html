@@ -82,14 +82,14 @@ tr:nth-child(even) {
 	<table class="scroll">
 	<thead>
         <tr>
-            <th>cat</th>
+            <th>cat <input type="text" placeholder="text to filter" ng-model="txt_filter_cat" style="width: 80%;"></th>
 			<th>name</th>
 			<th>date</th>
-			<th>value</th>
+			<th>value <input type="text" placeholder="text to filter" ng-model="txt_filter_val" style="width: 80%;"></th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="x in data3">
+        <tr ng-repeat="x in data3 | filter:txt_filter_cat | filter:txt_filter_val">
 			<td>{{x.cat}}</td>
 			<td>{{x.name}}</td>
 			<td>{{x.date}}</td>
