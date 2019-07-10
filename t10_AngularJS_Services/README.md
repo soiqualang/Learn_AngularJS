@@ -30,7 +30,7 @@ https://jonsuh.com/blog/convert-loop-through-json-php-javascript-arrays-objects/
 $someJSON = '[{"name":"Jonathan Suh","gender":"male"},{"name":"William Philbin","gender":"male"},{"name":"Allison McKinnery","gender":"female"}]';
 $someArray = json_decode($someJSON, true);
 echo json_encode($someArray);
-``
+```
 
 ### Scroll bar in table
 
