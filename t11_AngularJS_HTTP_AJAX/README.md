@@ -41,6 +41,8 @@ $scope.$watch('txt1', function (newValue) {
 
 <img src="h5.PNG">
 
+<img src="h6.PNG">
+
 
 
 https://nominatim.openstreetmap.org/search?q=nghe%20an&format=json&polygon=1&addressdetails=1
