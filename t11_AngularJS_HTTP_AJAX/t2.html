@@ -2,6 +2,25 @@
 <html>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+img.sort{
+	width:20px;
+	cursor: pointer;
+}
+</style>
 <body>
 
 <div ng-app="myApp" ng-controller="myCtrl"> 
@@ -14,12 +33,23 @@
 <h1>{{data2get}}</h1>
 <p>{{q}}</p>
 
-<ul>
-	<li ng-repeat="x in kq">{{x.lat+' | '+x.lon+' | '+x.display_name+' | '+x.type}}</li>
-</ul>
+<table>
+  <tr>
+    <th>display_name</th>
+    <th>type</th>
+	<th>lat</th>
+	<th>lon</th>
+  </tr>
+  <tr ng-repeat="x in kq">
+    <td>{{x.display_name}}</td>
+    <td>{{x.type}}</td>
+	<td>{{x.lat}}</td>
+	<td>{{x.lon}}</td>
+  </tr>
+</table>
 
 <hr>
-<input type="text" placeholder="Nhap gi cung duoc" ng-model="txt1">
+<input type="text" placeholder="Nhap gi cung duoc =))" ng-model="txt1">
 
 <p>{{txt1}}</p>
 <p>{{haha1}}</p>
