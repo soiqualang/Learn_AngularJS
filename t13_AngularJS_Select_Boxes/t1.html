@@ -5,27 +5,62 @@
 
 <div ng-app="myApp" ng-controller="myCtrl">
 
+<h1>Array</h1>
 <p>Select a car:</p>
 
-<select ng-model="selectedCar" ng-options="x.model for x in cars">
+<select ng-model="selectedCar_arr" ng-options="x.model for x in cars_arr">
 </select>
 
-<h1>You selected: {{selectedCar.model}}</h1>
-<h2>Its color is: {{selectedCar.color}}</h2>
+<h2>You selected: {{selectedCar_arr.model}}</h2>
+<h2>Its color is: {{selectedCar_arr.color}}</h2>
+
+<hr>
+
+<h1>Object</h1>
+
+<select ng-model="selectedCar_obj" ng-options="x for (x,y) in cars_obj">
+</select>
+
+<h2>You selected: {{selectedCar_obj}}</h2>
+
+<hr>
+
+<h1>Multi Objects</h1>
+
+<select ng-model="selectedCar_objs" ng-options="x for (x,y) in cars_objs">
+</select>
+
+<h2>You selected: {{selectedCar_objs.brand}}</h2>
+<h2>You selected: {{selectedCar_objs.model}}</h2>
+<h2>You selected: {{selectedCar_objs.color}}</h2>
 
 </div>
 
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
-    $scope.cars = [
+    $scope.cars_arr = [
         {model : "Ford Mustang", color : "red"},
         {model : "Fiat 500", color : "white"},
         {model : "Volvo XC90", color : "black"}
     ];
+	
+	$scope.cars_obj = {
+        car01 : "Ford",
+        car02 : "Fiat",
+        car03 : "Volvo"
+    }
+	
+	$scope.cars_objs = {
+	  car01 : {brand : "Ford", model : "Mustang", color : "red"},
+	  car02 : {brand : "Fiat", model : "500", color : "white"},
+	  car03 : {brand : "Volvo", model : "XC90", color : "black"}
+	};
 });
 </script>
 
+<br>
+<hr>
 <p>When you use the ng-options directive to create dropdown lists, the selected value can be an object.</p>
 <p>In this example you can display both the model and the color of the selected element.</p>
 

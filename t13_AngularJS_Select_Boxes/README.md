@@ -9,9 +9,14 @@ Because the `ng-repeat` directive repeats a block of HTML code for each item in 
 
 https://github.com/soiqualang/Learn_AngularJS/tree/master/t7_AngularJS_Controllers
 
-Much be very difficult to get text of an option in selectbox, but with ng-options, we can hold an selected object (include all option value and option text)
+Much be very difficult to get text of an option in selectbox, but with `ng-options`, we can hold an selected object (include all option value and option text)
+
+<img src="h1.PNG">
 
 ---
+
+https://www.w3schools.com/angular/angular_select.asp
+
 
 https://www.w3schools.com/angular/
 
