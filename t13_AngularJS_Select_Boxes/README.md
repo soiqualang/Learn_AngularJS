@@ -3,7 +3,7 @@ AngularJS Select Boxes
 
 Because the `ng-repeat` directive repeats a block of HTML code for each item in an array, it can be used to create options in a dropdown list, but the `ng-options` directive was made especially for filling a dropdown list with options, and has at least one important advantage:
 
-** Dropdowns made with `ng-options` allows the selected value to be an object, while dropdowns made from `ng-repeat` has to be a string. **
+**Dropdowns made with `ng-options` allows the selected value to be an object, while dropdowns made from `ng-repeat` has to be a string.**
 
 ## Let have a bit review
 
