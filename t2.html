@@ -1,0 +1,71 @@
+<html>
+<head>
+<script>
+/*jslint vars: true, unparam: true, white: true */
+
+// based on
+// http://www.html5rocks.com/en/tutorials/file/filesystem/#toc-file-appending
+
+(function() {
+
+"use strict";
+
+// Chrome uses prefixes
+var fs = window.requestFileSystem || window.webkitRequestFileSystem,
+	Blob = window.BlobBuilder || window.WebKitBlobBuilder;
+
+var onError;
+
+var onInitFS = function(fs) {
+	console.log("INFO: opened file system " + fs.name);
+	console.log(fs.root);
+	fs.root.getFile("/dev/stdout", { create: false }, function(fileEntry) {
+		fileEntry.createWriter(function(fileWriter) {
+			fileWriter.onwriteend = function(e) {
+				console.log("Write completed.");
+			};
+			fileWriter.onerror = function(err) {
+				console.log("Write failed: " + err.toString());
+			};
+
+			var bb = new Blob();
+			bb.append("Lorem Ipsum");
+			fileWriter.write(bb.getBlob("text/plain"));
+		}, onError);
+	}, onError);
+};
+
+onError = function(err) {
+	var msg;
+	switch(err.code) {
+		case FileError.QUOTA_EXCEEDED_ERR:
+			msg = "QUOTA_EXCEEDED_ERR";
+			break;
+		case FileError.NOT_FOUND_ERR:
+			msg = "NOT_FOUND_ERR";
+			break;
+		case FileError.SECURITY_ERR:
+			msg = "SECURITY_ERR";
+			break;
+		case FileError.INVALID_MODIFICATION_ERR:
+			msg = "INVALID_MODIFICATION_ERR";
+			break;
+		case FileError.INVALID_STATE_ERR:
+			msg = "INVALID_STATE_ERR";
+			break;
+		default:
+			msg = "Unknown Error";
+			break;
+	}
+	console.log("ERROR: " + msg);
+};
+
+fs(window.PERSISTENT, 10 * 1024, onInitFS, onError);
+
+}());
+</script>
+</head>
+<body>
+
+</body>
+</html>

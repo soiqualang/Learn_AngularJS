@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<input type="text" placeholder="Nhap dia chi" ng-model="q">
+
+<input type="button" ng-click="func2get()" value="Send data by GET method">
+
+
+<h1>{{data2get}}</h1>
+<p>{{q}}</p>
+
+<ul>
+	<li ng-repeat="x in kq">{{x.lat+' | '+x.lon+' | '+x.display_name+' | '+x.type}}</li>
+</ul>
+
+<hr>
+<input type="text" placeholder="Nhap gi cung duoc" ng-model="txt1">
+
+<p>{{txt1}}</p>
+<p>{{haha1}}</p>
+
+</div>
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+
+	//$scope.haha1=$scope.txt1;	
+	$scope.haha1='';	
+	$scope.$watch('txt1', function (newValue) {
+		$scope.haha1 = 'New value: '+newValue;
+	});
+	
+	
+	//geocode
+	$scope.kq='';
+	$scope.q='Nghe An';
+	$scope.data2get={};
+	
+	//set data2get = value user text in
+	$scope.$watch('q', function (newValue) {
+		$scope.data2get={
+		q: ""+newValue+"",
+		format: 'json',
+		polygon: 1,
+		addressdetails: 1
+	};
+	});
+
+	var httpconfig={'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'};
+	
+	var url_service='https://nominatim.openstreetmap.org/search/';
+	
+	$scope.func2get=function(){
+		$http({
+			method: 'GET',
+			url: url_service,
+			params: $scope.data2get,
+			headers: httpconfig
+		}).then(function(response) {
+			$scope.kq = response.data;
+			//$scope.lat=response.data[0].lat;
+		});
+	}
+	
+	
+});
+</script>
+
+</body>
+</html>
