@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<style>
+.yellowbox{
+	width:400px;
+	height:400px;
+	background-color:yellow;
+	float: left;
+}
+.greenbox{
+	width:400px;
+	height:400px;
+	background-color:#00800085;
+	float: left;
+}
+.clearBoth { clear:both; }
+
+
+.info {
+    padding: 6px 8px;
+    float: right;
+    position: absolute;
+    z-index: 1000;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    left: 140px;
+    top: 150px;
+}
+</style>
 <body>
 
 <div ng-app="myApp" ng-controller="myCtrl">
 
-<p>Coordinates: {{x + ', ' + y}}</p>
+<p>Coordinates: {{x1 + ', ' + y1}}</p>
 
-<div style="width:400px;height:400px;background-color:yellow;" ng-mousemove="myMouse($event)">
+<div class="yellowbox" ng-mousemove="myMouse_yellow($event)">
 </div>
 
+<div class="info" style="left:{{x2}}px;top:{{y2}}px;">
+	{{x2 + ', ' + y2}}<br>
+	<img src="sun.png" width="100px">
+</div>
+
+<div class="greenbox" ng-mousemove="myMouse_green($event)">
+</div>
+
+<br class="clearBoth">
 <hr>
 
 <button ng-click="myFunc()">{{label}}</button>
@@ -36,9 +76,13 @@ app.controller('myCtrl', function($scope) {
 		$scope.showMe?$scope.label='Hide me!':$scope.label='Show me!';
     }
 	
-	$scope.myMouse = function(myE) {
-        $scope.x = myE.clientX;
-        $scope.y = myE.clientY;
+	$scope.myMouse_yellow = function(myE) {
+        $scope.x1 = myE.clientX;
+        $scope.y1 = myE.clientY;
+    }
+	$scope.myMouse_green = function(myE) {
+        $scope.x2 = myE.clientX;
+        $scope.y2 = myE.clientY;
     }
 });
 </script>

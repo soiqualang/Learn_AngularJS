@@ -1,8 +1,10 @@
 # Learn_AngularJS
 AngularJS Events
 
+<img src="h1.PNG">
 
 
+https://stackoverflow.com/questions/224602/how-do-you-make-div-elements-display-inline
 
 ---
 
