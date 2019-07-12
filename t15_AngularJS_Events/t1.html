@@ -5,7 +5,14 @@
 
 <div ng-app="myApp" ng-controller="myCtrl">
 
-<button ng-click="myFunc()">Click Me!</button>
+<p>Coordinates: {{x + ', ' + y}}</p>
+
+<div style="width:400px;height:400px;background-color:yellow;" ng-mousemove="myMouse($event)">
+</div>
+
+<hr>
+
+<button ng-click="myFunc()">{{label}}</button>
 
 <div ng-show="showMe">
     <h1>Menu:</h1>
@@ -13,19 +20,28 @@
     <div>Pasta</div>
     <div>Pesce</div>
 </div>
+<p>Click the button to show/hide the menu.</p>
+
+
+
 
 </div>
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
     $scope.showMe = false;
+	$scope.label='Show me!';
     $scope.myFunc = function() {
         $scope.showMe = !$scope.showMe;
+		$scope.showMe?$scope.label='Hide me!':$scope.label='Show me!';
+    }
+	
+	$scope.myMouse = function(myE) {
+        $scope.x = myE.clientX;
+        $scope.y = myE.clientY;
     }
 });
 </script>
-
-<p>Click the button to show/hide the menu.</p>
 
 </body>
 </html>
