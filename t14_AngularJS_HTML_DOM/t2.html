@@ -105,6 +105,8 @@ input[value="on"]:checked ~ .lamp:before {
              0px 8px 80px rgba(255,255,255,0.6),
              0px 8px 120px rgba(255,255,255,0.6);
 }
+
+.pointer {cursor: pointer;}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
@@ -113,9 +115,9 @@ input[value="on"]:checked ~ .lamp:before {
 <div ng-app="myApp" ng-init="mySwitch=true" ng-controller="myCtrl">
 
 <div id="lamp">
-  <input type="radio" name="switch" value="on" />
-  <input type="radio" name="switch" value="off" checked="checked"/>
-  <div class="lamp">
+  <input type="radio" name="switch" value="on" ng-model="switch_btn"/>
+  <input type="radio" name="switch" value="off" checked="checked" ng-model="switch_btn"/>
+  <div class="lamp" ng-mouseover="lampover()" ng-mouseleave="lampleave()" class="pointer">
     <div class="gonna-give-light"></div>
   </div>
 </div>
@@ -124,7 +126,14 @@ input[value="on"]:checked ~ .lamp:before {
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$interval) {
-	
+	$scope.lampover=function(){
+		//alert('hahaha');
+		$scope.switch_btn='on';
+	}
+	$scope.lampleave=function(){
+		//alert('huhuhu');
+		$scope.switch_btn='off';
+	}
 });
 </script>
 </body>
