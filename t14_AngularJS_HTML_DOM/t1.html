@@ -16,14 +16,23 @@
 </p>
 
 <hr>
-{{ranNum}}
+{{istrue}}
+
+<h1 style="{{h1style}}">That la thu vi :v</h1>
 
 </div> 
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$interval) {
+	$scope.istrue=true;
+	var style_purple='text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,0 0 0.2em #87F';
+	var style_red='text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87';
+	var style_green='text-shadow: 0 0 0.2em #8F7';
+	$scope.h1style='text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,0 0 0.2em #87F';
 	$interval(function () {
-		$scope.ranNum=Math.floor(Math.random() * 10);
+		//$scope.ranNum=Math.floor(Math.random() * 10);
+		$scope.istrue=$scope.istrue?false:true;
+		$scope.istrue?$scope.h1style=style_red:$scope.h1style=style_green;
 	}, 500);
 });
 </script>

@@ -22,3 +22,11 @@ https://www.raymondcamden.com/2014/02/07/AngularJS-IndexedDB-Demo
 
 https://static.raymondcamden.com/demos/2014/feb/7/index.html#/home
 
+--
+
+https://viblo.asia/p/18-ki-thuat-rut-gon-code-javascript-cua-ban-Qbq5QqRL5D8
+
+https://techblog.vn/bat-cong-tac-bat-tat-den-chi-voi-css3
+
+http://www.300yards.com/007/text-shadow.html
+
