@@ -14,6 +14,17 @@ You can add `!` before expression to get an inverse expression
 
 > You can use any expression that evaluates to true or false:
 
+<img src="h1.PNG">
+<img src="h2.PNG">
+
+
+## h2.html - on/off a lamp
+
+
+
+
+
+
 ---
 
 https://www.w3schools.com/angular/
