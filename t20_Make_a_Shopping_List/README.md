@@ -1,7 +1,9 @@
 # Learn_AngularJS
 Learn_AngularJS
 
+Remove element in Object
 
+products.splice(1,1)
 
 
 https://stackoverflow.com/questions/19583496/can-angularjs-ng-keyup-pass-in-which-key-was-pressed
