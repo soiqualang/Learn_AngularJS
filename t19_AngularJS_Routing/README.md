@@ -7,6 +7,10 @@ Multi param in URL?
 Accessing parameters from the route
 
 
+https://stackoverflow.com/questions/29044472/how-to-have-multiple-routeparams-on-angularjs
+
+https://www.guru99.com/angularjs-routes.html
+
 --
 
 https://www.w3schools.com/angular/
