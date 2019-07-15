@@ -5,10 +5,16 @@
 
 <body ng-app="myApp">
 
+<div ng-controller="mainCtrl">
+{{txt}}<br>
+{{city}}
+</div>
+
 <p><a href="#/!">Main</a></p>
 
-<a href="#!london">City 1</a>
-<a href="#!paris">City 2</a>
+<a href="#!london">City 1</a> | 
+<a href="#!paris">City 2</a> |
+<a href="#!location/Asia/Vietnam/HoChiMinh city">/Asia/Vietnam/HoChiMinh city</a>
 
 <p>Click on the links.</p>
 
@@ -30,7 +36,11 @@ app.config(function($routeProvider) {
     .when("/paris", {
         templateUrl : "paris.html",
         controller : "parisCtrl"
-    })	
+    })
+	.when("/location/:region/:country/:city", {
+        template : "<h1>{{city +' - '+ country +' - '+ region}}</h1>",
+		controller : "mainCtrl"
+    })
 	.otherwise({
 		template : "<h1>None</h1><p>Nothing has been selected</p>"
 	});
@@ -40,6 +50,12 @@ app.controller("londonCtrl", function ($scope) {
 });
 app.controller("parisCtrl", function ($scope) {
     $scope.msg = "I love Paris";
+});
+app.controller("mainCtrl", function ($scope,$routeParams,$route) {
+    $scope.region=$routeParams.region;
+	$scope.country=$routeParams.country;
+	$scope.city=$routeParams.city;
+	$scope.txt='jsdhjsh';
 });
 
 </script>

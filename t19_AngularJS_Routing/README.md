@@ -2,7 +2,9 @@
 AngularJS Routing
 
 
+Multi param in URL?
 
+Accessing parameters from the route
 
 
 --
