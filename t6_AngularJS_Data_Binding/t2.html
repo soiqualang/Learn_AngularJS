@@ -37,7 +37,7 @@ app.controller('myCtrl', function($scope,$sce) {
 	};
 	$scope.txt1='<h1>hahahaha</h1>';
 	$scope.change_select=function(selected){
-		var src='http://www.youtube.com/embed/'+selected;
+		var src='https://www.youtube.com/embed/'+selected;
 		$scope.iframe.url=$sce.trustAsResourceUrl(src);
 		//return $sce.trustAsResourceUrl(src);
 	};
